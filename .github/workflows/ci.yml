@@ -25,12 +25,12 @@ jobs:
       - name: install and list packages
         shell: pwsh
         run: |
-          conda install -c conda-forge rdkit 
+          conda install -c conda-forge openbabel
           conda list
       - name: run test
         shell: pwsh
         run: |
-           python rdkit-smarts-tests.py --prefix ${{ matrix.os }}
+           python openbabel-smarts-tests.py --prefix ${{ matrix.os }}
       - uses: actions/upload-artifact@v2
         with:
           name: outfiles
