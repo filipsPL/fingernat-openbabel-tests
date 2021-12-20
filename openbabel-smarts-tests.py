@@ -34,4 +34,8 @@ mol = pybel.readstring("smi",testing_molecule)
 
 smarts = pybel.Smarts(smarts_pattern_to_test)
 
-print (smarts.findall(mol))
+
+patternFound = smarts.findall(mol)
+
+triggeredatomsList = [x[0] for x in patternFound]
+print ("%s :: %s" % (prefix, triggeredatomsList) )
