@@ -38,4 +38,16 @@ smarts = pybel.Smarts(smarts_pattern_to_test)
 patternFound = smarts.findall(mol)
 
 triggeredatomsList = [x[0] for x in patternFound]
-print ("%s :: %s" % (prefix, triggeredatomsList) )
+print ("%s | smiles :: %s" % (prefix, triggeredatomsList) )
+
+
+
+
+###### from PDB
+
+mol = next(pybel.readfile("pdb", "GG.pdb"))
+
+patternFound = smarts.findall(mol)
+
+triggeredatomsList = [x[0] for x in patternFound]
+print ("%s | pdb :: %s" % (prefix, triggeredatomsList) )
