@@ -49,6 +49,7 @@ smarts_pattern_to_test = '[!$([#1,#6,F,Cl,Br,I,o,s,nX3,#7v5,#15v5,#16v4,#16v6,*+
 smarts = pybel.Smarts(smarts_pattern_to_test)
 
 mol = next(pybel.readfile("pdb", "GG.pdb"))
+mol.removeh()
 
 patternFound = smarts.findall(mol)
 
