@@ -11,6 +11,7 @@ jobs:
         os: ['ubuntu-20.04', 'macos-latest', 'windows-latest']
         # os: ['windows-latest']
         # python-version: [3.5, 3.7, 3.8, 3.9]
+        obabel-version: [3.1.1 3.1.0 3.0.0 2.4.1]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -25,12 +26,12 @@ jobs:
       - name: install and list packages
         shell: pwsh
         run: |
-          conda install -c conda-forge openbabel
+          conda install -c conda-forge openbabel=${{ matrix.obabel-version }}
           conda list
       - name: run test
         shell: pwsh
         run: |
-           python openbabel-smarts-tests.py --prefix ${{ matrix.os }}
+           python openbabel-smarts-tests.py --prefix ${{ matrix.os }}=${{ matrix.obabel-version }}
       - uses: actions/upload-artifact@v2
         with:
           name: outfiles
